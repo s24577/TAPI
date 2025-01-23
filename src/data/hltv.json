@@ -1,0 +1,529 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Natus Vincere",
+      "rank": 1,
+      "country": "Ukraine",
+      "players": [
+        {
+          "id": 101,
+          "nickname": "s1mple",
+          "fullName": "Oleksandr Kostyliev",
+          "country": "Ukraine",
+          "age": 26,
+          "rating": 1.23
+        },
+        {
+          "id": 102,
+          "nickname": "b1t",
+          "fullName": "Valeriy Vakhovskiy",
+          "country": "Ukraine",
+          "age": 21,
+          "rating": 1.15
+        },
+        {
+          "id": 103,
+          "nickname": "jL",
+          "fullName": "Justinas Lekavicius",
+          "country": "Lithuania",
+          "age": 20,
+          "rating": 1.09
+        },
+        {
+          "id": 104,
+          "nickname": "iM",
+          "fullName": "Ivan Mihai",
+          "country": "Moldova",
+          "age": 20,
+          "rating": 1.12
+        },
+        {
+          "id": 105,
+          "nickname": "w0nderful",
+          "fullName": "Danylo Bondarchuk",
+          "country": "Ukraine",
+          "age": 18,
+          "rating": 1.08
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "FaZe Clan",
+      "rank": 2,
+      "country": "International",
+      "players": [
+        {
+          "id": 201,
+          "nickname": "karrigan",
+          "fullName": "Finn Andersen",
+          "country": "Denmark",
+          "age": 33,
+          "rating": 0.98
+        },
+        {
+          "id": 202,
+          "nickname": "broky",
+          "fullName": "Helvijs Saukants",
+          "country": "Latvia",
+          "age": 22,
+          "rating": 1.18
+        },
+        {
+          "id": 203,
+          "nickname": "ropz",
+          "fullName": "Robin Kool",
+          "country": "Estonia",
+          "age": 24,
+          "rating": 1.16
+        },
+        {
+          "id": 204,
+          "nickname": "rain",
+          "fullName": "Håvard Nygaard",
+          "country": "Norway",
+          "age": 29,
+          "rating": 1.05
+        },
+        {
+          "id": 205,
+          "nickname": "frozen",
+          "fullName": "David Čerňanský",
+          "country": "Slovakia",
+          "age": 21,
+          "rating": 1.14
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Vitality",
+      "rank": 3,
+      "country": "France",
+      "players": [
+        {
+          "id": 301,
+          "nickname": "ZywOo",
+          "fullName": "Mathieu Herbaut",
+          "country": "France",
+          "age": 23,
+          "rating": 1.32
+        },
+        {
+          "id": 302,
+          "nickname": "dupreeh",
+          "fullName": "Peter Rasmussen",
+          "country": "Denmark",
+          "age": 30,
+          "rating": 1.08
+        },
+        {
+          "id": 303,
+          "nickname": "Magisk",
+          "fullName": "Emil Reif",
+          "country": "Denmark",
+          "age": 25,
+          "rating": 1.12
+        },
+        {
+          "id": 304,
+          "nickname": "flameZ",
+          "fullName": "Shahar Shushan",
+          "country": "Israel",
+          "age": 20,
+          "rating": 1.09
+        },
+        {
+          "id": 305,
+          "nickname": "mezii",
+          "fullName": "William Merriman",
+          "country": "United Kingdom",
+          "age": 25,
+          "rating": 1.11
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "G2 Esports",
+      "rank": 4,
+      "country": "International",
+      "players": [
+        {
+          "id": 401,
+          "nickname": "m0NESY",
+          "fullName": "Ilya Osipov",
+          "country": "Russia",
+          "age": 19,
+          "rating": 1.25
+        },
+        {
+          "id": 402,
+          "nickname": "HooXi",
+          "fullName": "Rasmus Nielsen",
+          "country": "Denmark",
+          "age": 28,
+          "rating": 0.95
+        },
+        {
+          "id": 403,
+          "nickname": "huNter-",
+          "fullName": "Nemanja Kovač",
+          "country": "Bosnia and Herzegovina",
+          "age": 27,
+          "rating": 1.15
+        },
+        {
+          "id": 404,
+          "nickname": "NiKo",
+          "fullName": "Nikola Kovač",
+          "country": "Bosnia and Herzegovina",
+          "age": 27,
+          "rating": 1.22
+        },
+        {
+          "id": 405,
+          "nickname": "nexa",
+          "fullName": "Nemanja Isaković",
+          "country": "Serbia",
+          "age": 26,
+          "rating": 1.08
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ENCE",
+      "rank": 5,
+      "country": "International",
+      "players": [
+        {
+          "id": 501,
+          "nickname": "dycha",
+          "fullName": "Paweł Dycha",
+          "country": "Poland",
+          "age": 25,
+          "rating": 1.15
+        },
+        {
+          "id": 502,
+          "nickname": "SunPayus",
+          "fullName": "Alvaro Garcia",
+          "country": "Spain",
+          "age": 24,
+          "rating": 1.18
+        },
+        {
+          "id": 503,
+          "nickname": "gla1ve",
+          "fullName": "Lukas Rossander",
+          "country": "Denmark",
+          "age": 28,
+          "rating": 1.02
+        },
+        {
+          "id": 504,
+          "nickname": "NertZ",
+          "fullName": "Guy Iluz",
+          "country": "Israel",
+          "age": 21,
+          "rating": 1.13
+        },
+        {
+          "id": 505,
+          "nickname": "valde",
+          "fullName": "Valdemar Bjørn Vangså",
+          "country": "Denmark",
+          "age": 28,
+          "rating": 1.09
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "id": 1,
+      "team1": "Natus Vincere",
+      "team2": "FaZe Clan",
+      "date": "2024-03-20T18:00:00Z",
+      "event": "ESL Pro League",
+      "map": "de_inferno",
+      "status": "upcoming",
+      "format": "bo3"
+    },
+    {
+      "id": 2,
+      "team1": "Vitality",
+      "team2": "Natus Vincere",
+      "date": "2024-03-19T16:00:00Z",
+      "event": "ESL Pro League",
+      "map": "de_mirage",
+      "status": "completed",
+      "format": "bo3",
+      "score": {
+        "team1": 16,
+        "team2": 14
+      },
+      "maps": [
+        {
+          "name": "de_mirage",
+          "score": "16-14"
+        },
+        {
+          "name": "de_ancient",
+          "score": "13-16"
+        },
+        {
+          "name": "de_inferno",
+          "score": "16-12"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "team1": "G2 Esports",
+      "team2": "ENCE",
+      "date": "2024-03-21T15:00:00Z",
+      "event": "ESL Pro League",
+      "map": "de_ancient",
+      "status": "upcoming",
+      "format": "bo3"
+    },
+    {
+      "id": 4,
+      "team1": "FaZe Clan",
+      "team2": "G2 Esports",
+      "date": "2024-03-18T19:00:00Z",
+      "event": "ESL Pro League",
+      "status": "completed",
+      "format": "bo3",
+      "score": {
+        "team1": 2,
+        "team2": 1
+      },
+      "maps": [
+        {
+          "name": "de_nuke",
+          "score": "16-10"
+        },
+        {
+          "name": "de_overpass",
+          "score": "12-16"
+        },
+        {
+          "name": "de_vertigo",
+          "score": "16-14"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "ESL Pro League Season 19",
+      "startDate": "2024-03-15",
+      "endDate": "2024-04-07",
+      "location": "Malta",
+      "prizePool": "$850,000",
+      "teams": ["Natus Vincere", "FaZe Clan", "Vitality", "G2 Esports", "ENCE"],
+      "format": "Group Stage + Playoffs",
+      "status": "ongoing",
+      "venue": "Malta Fairs & Conventions Centre",
+      "totalTeams": 32
+    },
+    {
+      "id": 2,
+      "name": "BLAST Premier: Spring Finals 2024",
+      "startDate": "2024-06-12",
+      "endDate": "2024-06-18",
+      "location": "Copenhagen",
+      "prizePool": "$425,000",
+      "teams": ["FaZe Clan", "Vitality", "G2 Esports"],
+      "format": "Double Elimination",
+      "status": "upcoming",
+      "venue": "Royal Arena",
+      "totalTeams": 8
+    },
+    {
+      "id": 3,
+      "name": "IEM Cologne 2024",
+      "startDate": "2024-07-16",
+      "endDate": "2024-07-28",
+      "location": "Cologne",
+      "prizePool": "$1,000,000",
+      "teams": ["Natus Vincere", "FaZe Clan", "Vitality", "G2 Esports", "ENCE"],
+      "format": "Group Stage + Single Elimination",
+      "status": "upcoming",
+      "venue": "LANXESS Arena",
+      "totalTeams": 24
+    }
+  ],
+  "rankings": {
+    "current": [
+      {
+        "position": 1,
+        "team": "Natus Vincere",
+        "points": 885,
+        "change": 0
+      },
+      {
+        "position": 2,
+        "team": "FaZe Clan",
+        "points": 867,
+        "change": 1
+      },
+      {
+        "position": 3,
+        "team": "Vitality",
+        "points": 845,
+        "change": -1
+      },
+      {
+        "position": 4,
+        "team": "G2 Esports",
+        "points": 798,
+        "change": 0
+      },
+      {
+        "position": 5,
+        "team": "ENCE",
+        "points": 756,
+        "change": 2
+      }
+    ],
+    "lastUpdate": "2024-03-18"
+  },
+  "news": [
+    {
+      "id": 1,
+      "title": "NAVI dominates ESL Pro League opener",
+      "date": "2024-03-19T20:00:00Z",
+      "author": {
+        "id": 1,
+        "name": "John Smith",
+        "role": "Senior Editor",
+        "articles": {
+          "total": 1256,
+          "recent": [
+            {
+              "id": 15,
+              "title": "The rise of m0NESY",
+              "views": 25000,
+              "comments": [
+                {
+                  "id": 1,
+                  "user": "CSGOFan123",
+                  "text": "Great analysis!",
+                  "likes": 150,
+                  "replies": [
+                    {
+                      "id": 1,
+                      "user": "ProPlayer",
+                      "text": "Totally agree",
+                      "likes": 45
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "content": "Natus Vincere showed impressive form...",
+      "categories": ["Tournament", "Team News"],
+      "tags": ["NAVI", "ESL Pro League", "s1mple"],
+      "comments": [
+        {
+          "id": 1,
+          "user": {
+            "id": 123,
+            "nickname": "CSGO_Expert",
+            "memberSince": "2020-01-15",
+            "badges": [
+              {
+                "id": 1,
+                "name": "Veteran",
+                "description": "Member for over 3 years",
+                "icon": "veteran_badge.png"
+              }
+            ]
+          },
+          "text": "Amazing performance by NAVI!",
+          "timestamp": "2024-03-19T21:15:00Z",
+          "likes": 234,
+          "replies": [
+            {
+              "id": 1,
+              "user": {
+                "id": 456,
+                "nickname": "NAVIFan",
+                "badges": [
+                  {
+                    "id": 2,
+                    "name": "Team Supporter",
+                    "tier": "Gold"
+                  }
+                ]
+              },
+              "text": "s1mple was on fire!",
+              "timestamp": "2024-03-19T21:30:00Z",
+              "likes": 123
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "players": {
+      "topRated": [
+        {
+          "player": {
+            "id": 301,
+            "nickname": "ZywOo",
+            "team": {
+              "name": "Vitality",
+              "ranking": 3,
+              "achievements": {
+                "majorWins": 0,
+                "tournaments": {
+                  "won": [
+                    {
+                      "name": "ESL Pro League Season 18",
+                      "date": "2023-12-15",
+                      "prize": "$200,000"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "stats": {
+            "rating2": 1.32,
+            "maps": 150,
+            "kdRatio": 1.45,
+            "impact": {
+              "openingKills": 0.18,
+              "clutches": {
+                "total": 45,
+                "details": [
+                  {
+                    "type": "1v1",
+                    "won": 25,
+                    "lost": 10
+                  },
+                  {
+                    "type": "1v2",
+                    "won": 15,
+                    "lost": 12
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+} 
