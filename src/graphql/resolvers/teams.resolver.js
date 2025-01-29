@@ -4,8 +4,7 @@ export const teamsResolver = {
     Query: {
         teams: async (_, { filter, sort, pagination }, { dataSources }) => {
             try {
-                let result = await dataSources.hltvAPI.getAllTeams();
-                console.log('Initial teams data:', result);
+                let result = await dataSources.hltvAPI.getAllTeams()
 
                 if (filter) {
                     result = result.filter(team => {
@@ -35,7 +34,7 @@ export const teamsResolver = {
                     result = result.slice(start, start + pageSize);
                 }
 
-                console.log('Filtered and sorted teams:', result);
+                
                 return result;
             } catch (error) {
                 console.error('Error in teams resolver:', error);

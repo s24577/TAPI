@@ -46,7 +46,6 @@ async function runAllTests() {
 }
 
 async function testTeamsService() {
-    console.log('Testing Teams Service...');
     
     teamsClient.getTeams({
         name: { contains: 'Natus' },
@@ -57,7 +56,6 @@ async function testTeamsService() {
             console.error('Error:', error);
             return;
         }
-        console.log('Teams:', response.teams);
     });
 
     teamsClient.getTeam({ id: 1 }, (error: any, response: any) => {
@@ -65,7 +63,6 @@ async function testTeamsService() {
             console.error('Error:', error);
             return;
         }
-        console.log('Team:', response);
     });
 
     teamsClient.createTeam({
@@ -85,7 +82,6 @@ async function testTeamsService() {
 }
 
 async function testMatchesService() {
-    console.log('\nTesting Matches Service...');
     
     matchesClient.getMatches({
         event: { contains: 'ESL' },
@@ -108,7 +104,6 @@ async function testMatchesService() {
 }
 
 async function testPlayersService() {
-    console.log('\nTesting Players Service...');
     
     playersClient.getPlayers({
         country: { contains: 'PL' },
@@ -125,7 +120,6 @@ function logResponse(label: string) {
             console.error(`Error in ${label}:`, error);
             return;
         }
-        console.log(`${label}:`, response);
     };
 }
 

@@ -101,11 +101,8 @@ try {
             const data = JSON.parse(fileContent);
             this.teams = data.teams;
             this.matches = data.matches;
-            console.log('GRPC Data initialized:', {
-                teamsCount: this.teams.length,
-                matchesCount: this.matches.length
-            });
-} catch (error) {
+            
+        } catch (error) {
             console.error('Error initializing GRPC data:', error);
             this.teams = [];
             this.matches = [];
