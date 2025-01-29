@@ -5,6 +5,7 @@ import hltvRoutesManager from "./rest/routes/hltv.routes.manager.js";
 import { ApolloServer } from 'apollo-server';
 import { typeDefs } from './graphql/schema/types';
 import { resolvers } from './graphql/resolvers';
+import { setupSwagger } from './config/swagger.js';
 
 const app = express();
 const REST_PORT = 4000;
@@ -13,6 +14,8 @@ const GRAPHQL_PORT = 4001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+setupSwagger(app);
 
 app.use('/api', hltvRoutesManager);
 

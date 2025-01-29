@@ -1,0 +1,605 @@
+openapi: 3.0.0
+info:
+  title: HLTV API
+  version: '1.0.0'
+  description: |
+    # HLTV REST API Documentation
+    
+    This API provides access to HLTV data including teams, matches, and players.
+    
+    ## Features
+    - Teams management (CRUD operations)
+    - Matches tracking
+    - Players statistics
+    
+    ## Authentication
+    Currently, the API does not require authentication.
+
+servers:
+  - url: http://localhost:4000
+    description: Development server
+
+tags:
+  - name: Teams
+    description: Operations for managing CS:GO teams
+  - name: Matches
+    description: Operations for tracking CS:GO matches
+  - name: Players
+    description: Operations for managing player information
+
+paths:
+  /api/teams:
+    get:
+      tags:
+        - Teams
+      summary: Get all teams
+      description: |
+        Retrieve a list of teams with optional filtering, sorting, and pagination.
+        You can filter teams by name, country, and sort them by various criteria.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Filter teams by name (case-insensitive)
+          example: "Natus Vincere"
+        - in: query
+          name: country
+          schema:
+            type: string
+          description: Filter teams by country code (e.g., UA, BR, DK)
+          example: "UA"
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: [name, rank, winRate]
+          description: Field to sort the results by
+        - in: query
+          name: order
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: Sort order (ascending or descending)
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+          description: Page number for pagination
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          description: Number of items per page
+      responses:
+        '200':
+          description: List of teams successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+              example:
+                data:
+                  - id: 1
+                    name: "Natus Vincere"
+                    rank: 1
+                    country: "UA"
+                    region: "CIS"
+                    worldRanking: 1
+                    winRate: 0.75
+                    players:
+                      - id: 1
+                        nickname: "s1mple"
+                        fullName: "Oleksandr Kostyliev"
+                        country: "UA"
+                        age: 24
+                        rating: 1.35
+                meta:
+                  total: 100
+                  page: 1
+                  pageSize: 10
+                  totalPages: 10
+    post:
+      tags:
+        - Teams
+      summary: Create a new team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+      responses:
+        '201':
+          description: Team created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+
+  /api/teams/{id}:
+    get:
+      tags:
+        - Teams
+      summary: Get team by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '404':
+          description: Team not found
+    put:
+      tags:
+        - Teams
+      summary: Update team
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRequest'
+      responses:
+        '200':
+          description: Team updated successfully
+        '404':
+          description: Team not found
+    delete:
+      tags:
+        - Teams
+      summary: Delete team
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Team deleted successfully
+        '404':
+          description: Team not found
+
+  /api/matches:
+    get:
+      tags:
+        - Matches
+      summary: Get all matches
+      description: Retrieve a list of matches with optional filtering, sorting, and pagination
+      parameters:
+        - in: query
+          name: event
+          schema:
+            type: string
+          description: Filter matches by event name
+        - in: query
+          name: team
+          schema:
+            type: string
+          description: Filter matches by team name
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [upcoming, live, finished]
+          description: Filter matches by status
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: [date, event]
+          description: Sort field
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+    post:
+      tags:
+        - Matches
+      summary: Create a new match
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatchRequest'
+      responses:
+        '201':
+          description: Match created successfully
+
+  /api/matches/{id}:
+    get:
+      tags:
+        - Matches
+      summary: Get match by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+    put:
+      tags:
+        - Matches
+      summary: Update match
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMatchRequest'
+      responses:
+        '200':
+          description: Match updated successfully
+    delete:
+      tags:
+        - Matches
+      summary: Delete match
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Match deleted successfully
+
+  /api/players:
+    get:
+      tags:
+        - Players
+      summary: Get all players
+      description: Retrieve a list of players with optional filtering and sorting
+      parameters:
+        - in: query
+          name: team
+          schema:
+            type: string
+          description: Filter players by team
+        - in: query
+          name: country
+          schema:
+            type: string
+          description: Filter players by country
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: [rating, age]
+          description: Sort field
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+
+  /api/players/{id}:
+    get:
+      tags:
+        - Players
+      summary: Get player by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+
+components:
+  schemas:
+    Team:
+      type: object
+      description: Represents a CS:GO team with its properties and statistics
+      required:
+        - id
+        - name
+        - country
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the team
+          example: 1
+        name:
+          type: string
+          description: Team name
+          example: "Natus Vincere"
+        rank:
+          type: integer
+          description: Current team ranking
+          example: 1
+        country:
+          type: string
+          description: Country code representing team's origin
+          example: "UA"
+        region:
+          type: string
+          description: Geographic region where the team competes
+          example: "CIS"
+        worldRanking:
+          type: integer
+          description: Global ranking position
+          example: 1
+        winRate:
+          type: number
+          format: float
+          description: Team's win rate (0.0 to 1.0)
+          example: 0.75
+        players:
+          type: array
+          description: List of players in the team
+          items:
+            $ref: '#/components/schemas/Player'
+        logoUrl:
+          type: string
+          description: URL to team's logo image
+          example: "https://example.com/logos/navi.png"
+        totalMatches:
+          type: integer
+          description: Total number of matches played
+          example: 150
+        matchesWon:
+          type: integer
+          description: Number of matches won
+          example: 112
+        matchesLost:
+          type: integer
+          description: Number of matches lost
+          example: 38
+        averagePlayerRating:
+          type: number
+          format: float
+          description: Average rating of all team players
+          example: 1.15
+
+    CreateTeamRequest:
+      type: object
+      required:
+        - name
+        - country
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+        worldRanking:
+          type: integer
+        winRate:
+          type: number
+
+    UpdateTeamRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+        worldRanking:
+          type: integer
+        winRate:
+          type: number
+
+    Player:
+      type: object
+      description: Represents a CS:GO player with their statistics and information
+      required:
+        - id
+        - nickname
+        - country
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the player
+          example: 1
+        nickname:
+          type: string
+          description: Player's in-game name
+          example: "s1mple"
+        fullName:
+          type: string
+          description: Player's real full name
+          example: "Oleksandr Kostyliev"
+        country:
+          type: string
+          description: Player's country code
+          example: "UA"
+        age:
+          type: integer
+          description: Player's age
+          example: 24
+        rating:
+          type: number
+          format: float
+          description: Player's HLTV rating 2.0
+          example: 1.35
+
+    Match:
+      type: object
+      description: Represents a CS:GO match with details and scores
+      required:
+        - id
+        - team1
+        - team2
+        - date
+        - event
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the match
+          example: 1
+        team1:
+          $ref: '#/components/schemas/Team'
+          description: First team in the match
+        team2:
+          $ref: '#/components/schemas/Team'
+          description: Second team in the match
+        date:
+          type: string
+          format: date-time
+          description: Date and time when the match is scheduled
+          example: "2024-03-20T15:00:00Z"
+        event:
+          type: string
+          description: Name of the tournament or event
+          example: "IEM Katowice 2024"
+        map:
+          type: string
+          description: Map being played
+          example: "de_inferno"
+        format:
+          type: string
+          description: Match format (e.g., BO1, BO3, BO5)
+          example: "BO3"
+        status:
+          type: string
+          enum: [upcoming, live, finished]
+          description: Current status of the match
+          example: "live"
+        team1Score:
+          type: integer
+          description: Score of team1
+          example: 16
+        team2Score:
+          type: integer
+          description: Score of team2
+          example: 14
+        streamUrl:
+          type: string
+          description: URL to the match stream
+          example: "https://twitch.tv/esl_csgo"
+
+    CreateMatchRequest:
+      type: object
+      required:
+        - team1Id
+        - team2Id
+        - date
+        - event
+      properties:
+        team1Id:
+          type: integer
+        team2Id:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        event:
+          type: string
+        map:
+          type: string
+        format:
+          type: string
+        status:
+          type: string
+          enum: [upcoming, live, finished]
+
+    UpdateMatchRequest:
+      type: object
+      properties:
+        team1Id:
+          type: integer
+        team2Id:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        event:
+          type: string
+        map:
+          type: string
+        format:
+          type: string
+        status:
+          type: string
+          enum: [upcoming, live, finished]
+        team1Score:
+          type: integer
+        team2Score:
+          type: integer
+        streamUrl:
+          type: string
+
+    PaginationMeta:
+      type: object
+      description: Metadata for pagination
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+          example: 100
+        page:
+          type: integer
+          description: Current page number
+          example: 1
+        pageSize:
+          type: integer
+          description: Number of items per page
+          example: 10
+        totalPages:
+          type: integer
+          description: Total number of pages available
+          example: 10 
