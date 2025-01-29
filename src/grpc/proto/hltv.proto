@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package hltv;
+
+import "common.proto";
+import "player.proto";
+import "team.proto";
+import "match.proto";

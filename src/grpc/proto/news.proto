@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package hltv;
+
+import "common.proto";
+
+message News {
+  int32 id = 1;
+  string title = 2;
+  string content = 3;
+  string date = 4;
+  string author = 5;
+}
+
+service NewsService {
+  rpc GetNews (NewsFilter) returns (NewsList);
+  rpc GetNewsItem (NewsId) returns (News);
+  rpc CreateNews (CreateNewsRequest) returns (News);
+  rpc UpdateNews (UpdateNewsRequest) returns (News);
+  rpc DeleteNews (NewsId) returns (DeleteResponse);
+}
+
+message NewsFilter {
+  StringFilter title = 1;
+  StringFilter author = 2;
+  StringFilter date = 3;
+  SortInput sort = 4;
+  PaginationInput pagination = 5;
+}
+
+message NewsId {
+  int32 id = 1;
+}
+
+message NewsList {
+  repeated News news = 1;
+}
+
+message CreateNewsRequest {
+  string title = 1;
+  string content = 2;
+  string author = 3;
+}
+
+message UpdateNewsRequest {
+  int32 id = 1;
+  string title = 2;
+  string content = 3;
+  string author = 4;
+} 

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package hltv;
+
+message StringFilter {
+  string eq = 1;
+  string contains = 2;
+  string notEq = 3;
+  string notContains = 4;
+}
+
+message IntFilter {
+  int32 eq = 1;
+  int32 gt = 2;
+  int32 lt = 3;
+  int32 gte = 4;
+  int32 lte = 5;
+}
+
+message FloatFilter {
+  float eq = 1;
+  float gt = 2;
+  float lt = 3;
+  float gte = 4;
+  float lte = 5;
+}
+
+message SortInput {
+  string field = 1;
+  SortDirection direction = 2;
+}
+
+enum SortDirection {
+  ASC = 0;
+  DESC = 1;
+}
+
+message PaginationInput {
+  int32 page = 1;
+  int32 pageSize = 2;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  string message = 2;
+} 

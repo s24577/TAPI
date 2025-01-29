@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package hltv;
+
+import "common.proto";
+import "team.proto";
+
+enum MatchStatus {
+  UPCOMING = 0;
+  LIVE = 1;
+  FINISHED = 2;
+  CANCELLED = 3;
+}
+
+message Match {
+  int32 id = 1;
+  Team team1 = 2;
+  Team team2 = 3;
+  string date = 4;
+  string event = 5;
+  string map = 6;
+  string format = 7;
+  MatchStatus status = 8;
+  int32 team1Score = 9;
+  int32 team2Score = 10;
+  string streamUrl = 11;
+}
+
+service MatchService {
+  rpc GetMatches (MatchFilter) returns (MatchList);
+  rpc GetMatch (MatchId) returns (Match);
+  rpc CreateMatch (CreateMatchRequest) returns (Match);
+  rpc UpdateMatch (UpdateMatchRequest) returns (Match);
+  rpc DeleteMatch (MatchId) returns (DeleteResponse);
+}
+
+message MatchFilter {
+  StringFilter event = 1;
+  StringFilter date = 2;
+  SortInput sort = 3;
+  PaginationInput pagination = 4;
+}
+
+message MatchId {
+  int32 id = 1;
+}
+
+message MatchList {
+  repeated Match matches = 1;
+}
+
+message CreateMatchRequest {
+  int32 team1Id = 1;
+  int32 team2Id = 2;
+  string date = 3;
+  string event = 4;
+  string map = 5;
+  string format = 6;
+  MatchStatus status = 7;
+  string streamUrl = 8;
+}
+
+message UpdateMatchRequest {
+  int32 id = 1;
+  int32 team1Id = 2;
+  int32 team2Id = 3;
+  string date = 4;
+  string event = 5;
+  string map = 6;
+  string format = 7;
+  MatchStatus status = 8;
+  int32 team1Score = 9;
+  int32 team2Score = 10;
+  string streamUrl = 11;
+} 

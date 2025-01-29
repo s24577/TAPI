@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package hltv;
+
+import "common.proto";
+
+message Player {
+  int32 id = 1;
+  string nickname = 2;
+  string fullName = 3;
+  string country = 4;
+  int32 age = 5;
+  float rating = 6;
+}
+
+service PlayerService {
+  rpc GetPlayers (PlayerFilter) returns (PlayerList);
+  rpc GetPlayer (PlayerId) returns (Player);
+  rpc CreatePlayer (CreatePlayerRequest) returns (Player);
+  rpc UpdatePlayer (UpdatePlayerRequest) returns (Player);
+  rpc DeletePlayer (PlayerId) returns (DeleteResponse);
+}
+
+message PlayerFilter {
+  StringFilter nickname = 1;
+  StringFilter country = 2;
+  FloatFilter rating = 3;
+  SortInput sort = 4;
+  PaginationInput pagination = 5;
+}
+
+message PlayerId {
+  int32 id = 1;
+}
+
+message PlayerList {
+  repeated Player players = 1;
+}
+
+message CreatePlayerRequest {
+  string nickname = 1;
+  string fullName = 2;
+  string country = 3;
+  int32 age = 4;
+  float rating = 5;
+}
+
+message UpdatePlayerRequest {
+  int32 id = 1;
+  string nickname = 2;
+  string fullName = 3;
+  string country = 4;
+  int32 age = 5;
+  float rating = 6;
+} 

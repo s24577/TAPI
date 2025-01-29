@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package hltv;
+
+import "common.proto";
+import "player.proto";
+
+message Team {
+  int32 id = 1;
+  string name = 2;
+  int32 rank = 3;
+  string country = 4;
+  string region = 5;
+  int32 worldRanking = 6;
+  float winRate = 7;
+  repeated Player players = 8;
+  string logoUrl = 9;
+  int32 totalMatches = 10;
+  int32 matchesWon = 11;
+  int32 matchesLost = 12;
+  float averagePlayerRating = 13;
+}
+
+service TeamService {
+  rpc GetTeams (TeamFilter) returns (TeamList);
+  rpc GetTeam (TeamId) returns (Team);
+  rpc CreateTeam (CreateTeamRequest) returns (Team);
+  rpc UpdateTeam (UpdateTeamRequest) returns (Team);
+  rpc DeleteTeam (TeamId) returns (DeleteResponse);
+}
+
+message TeamFilter {
+  StringFilter name = 1;
+  IntFilter rank = 2;
+  StringFilter country = 3;
+  FloatFilter winRate = 4;
+  SortInput sort = 5;
+  PaginationInput pagination = 6;
+}
+
+message TeamId {
+  int32 id = 1;
+}
+
+message TeamList {
+  repeated Team teams = 1;
+}
+
+message CreateTeamRequest {
+  string name = 1;
+  string country = 2;
+  string region = 3;
+  int32 worldRanking = 4;
+  float winRate = 5;
+  string logoUrl = 6;
+}
+
+message UpdateTeamRequest {
+  int32 id = 1;
+  string name = 2;
+  string country = 3;
+  string region = 4;
+  int32 worldRanking = 5;
+  float winRate = 6;
+  string logoUrl = 7;
+  int32 totalMatches = 8;
+  int32 matchesWon = 9;
+  int32 matchesLost = 10;
+  float averagePlayerRating = 11;
+} 
